@@ -1,0 +1,1 @@
+make run EXAMPLE_NAME=main.c
