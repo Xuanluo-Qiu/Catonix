@@ -18,5 +18,4 @@ sh tools/run.sh
 ```
 ## TODO
 * Coding easy core
-* color.h
 * ...

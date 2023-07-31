@@ -5,7 +5,7 @@ void event_loop();
 int main(void)
 {
 	initscr();
-	noecho(0);
+	hideCursor();
 
 	screen[3][6] = 1;
 
@@ -37,6 +37,14 @@ void event_loop()
 			if (buffer[0] == 'q')
 			{
 				break;
+			} else if (buffer[0] == 'c') {
+				colprint(
+					FONT_MODE_BOLD,
+					FGCol=FG_BLUE,
+					BGCol=BG_CYAN
+				);
+			} else if (buffer[0] == 'b') {
+				col_end();
 			}
 		}
 

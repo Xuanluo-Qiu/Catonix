@@ -30,18 +30,6 @@ void update_terminal_size() {
 	HEIGHT = size.ws_row - 1;
 }
 
-void hideCursor()
-{
-	printf("\e[?25l");
-	fflush(stdout);
-}
-
-void showCursor()
-{
-	printf("\e[?25h");
-	fflush(stdout);
-}
-
 void draw_scene()
 {
 	for (int h=0; h<HEIGHT; h++)

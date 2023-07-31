@@ -1,8 +1,10 @@
 #ifndef CATONIX_H
 #define CATONIX_H
 
+#include "config.h"
+#include "color.h"
 #include "display.h"
-#include "control.h"
+#include "async_input.h"
 
 void initscr();
 void noecho();

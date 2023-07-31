@@ -6,17 +6,12 @@ void initscr()
 	init_screen();
 }
 
-void noecho(int if_echo)
-{
-	if (if_echo == 0)
-	{
-		hideCursor();
-	}
-}
-
-
 void endwin()
 {
-	showCursor();
+	if (win_conf.cursor == 0)
+	{
+		showCursor();
+	}
+
 	free_screen();
 }

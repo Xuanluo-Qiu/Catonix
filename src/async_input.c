@@ -1,4 +1,4 @@
-#include "control.h"
+#include "async_input.h"
 
 struct termios orig_term;
 
