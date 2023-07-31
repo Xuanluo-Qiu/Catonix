@@ -1,12 +1,11 @@
-#include "display.h"
-#include "control.h"
+#include "catonix.h"
 
 void event_loop();
 
 int main(void)
 {
-	update_terminal_size();
-	init_screen();
+	initscr();
+	noecho(0);
 
 	screen[3][6] = 1;
 
@@ -14,7 +13,7 @@ int main(void)
 	event_loop();
 	disableRawMode();
 
-	free_screen();
+	endwin();
 
 	return 0;
 }
@@ -24,8 +23,6 @@ void event_loop()
 {
 	char buffer[256];
 	int bytesRead;
-
-	hideCursor();
 
 	while (1)
 	{
@@ -39,12 +36,11 @@ void event_loop()
 			buffer[bytesRead] = '\0';
 			if (buffer[0] == 'q')
 			{
-				showCursor();
 				break;
 			}
 		}
 
 		long current = clock();
-		frame_rate(begin, current);
+		frame_rate(60, begin, current);
 	}
 }

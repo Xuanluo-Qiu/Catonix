@@ -64,10 +64,10 @@ void draw_scene()
 	printf("\x1b[H");
 }
 
-void frame_rate(long begin, long current)
+void frame_rate(int frame_number, long begin, long current)
 {
 	long cont  = current - begin;
-	long frame = 1000/FRAMERATE;
+	long frame = 1000/frame_number;
 	long delay = frame - cont;
 	if (delay>0)
 	{

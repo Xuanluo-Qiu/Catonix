@@ -6,7 +6,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include <sys/ioctl.h>
-#include "config.h"
 
 extern int WIDTH;
 extern int HEIGHT;
@@ -18,6 +17,6 @@ void update_terminal_size();
 void hideCursor();
 void showCursor();
 void draw_scene();
-void frame_rate(long bengin, long current);
+void frame_rate(int frame_number, long bengin, long current);
 
 #endif
