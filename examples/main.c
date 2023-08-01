@@ -7,7 +7,7 @@ int main(void)
 	initscr();
 	hideCursor();
 
-	screen[3][6] = 1;
+	screen[3][6] = 'H';
 
 	enableRawMode();
 	event_loop();

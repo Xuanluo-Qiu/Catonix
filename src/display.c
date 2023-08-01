@@ -2,15 +2,15 @@
 
 int WIDTH = 0;
 int HEIGHT = 0;
-int **screen;
+char **screen;
 
 void init_screen()
 {
 	update_terminal_size();
-	screen = (int**)malloc(HEIGHT * sizeof(int*));
+	screen = (char**)malloc(HEIGHT * sizeof(char*));
 	for (int i=0; i<HEIGHT; i++)
 	{
-		screen[i] = (int*)malloc(WIDTH * sizeof(int));
+		screen[i] = (char*)malloc(WIDTH * sizeof(char));
 	}
 }
 
@@ -36,15 +36,7 @@ void draw_scene()
 	{
 		for (int w=0; w<WIDTH; w++)
 		{
-			// printf("%d", data[h][w]);
-
-			if (screen[h][w] == 0)
-			{
-				printf("~");
-			} else {
-				printf("_");
-			}
-
+			printf("%c", screen[h][w]);
 		}
 		printf("\n");
 	}
