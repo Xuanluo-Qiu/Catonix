@@ -2,6 +2,7 @@
 #define COLOR_H
 
 #include <stdio.h>
+#include "config.h"
 
 #define FONT_MODE_NO 0
 #define FONT_MODE_BOLD 1

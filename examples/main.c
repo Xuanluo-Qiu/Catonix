@@ -4,17 +4,16 @@ void event_loop();
 
 int main(void)
 {
-	initscr();
+	init_screen();
 	hideCursor();
 
-	screen[3][6] = 'H';
+	win_conf.data[3 * win_conf.width + 1] = 'H';
 
 	enableRawMode();
 	event_loop();
 	disableRawMode();
 
 	endwin();
-
 	return 0;
 }
 

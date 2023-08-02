@@ -8,10 +8,6 @@
 #include <sys/ioctl.h>
 #include "config.h"
 
-extern int WIDTH;
-extern int HEIGHT;
-extern char **screen;
-
 void init_screen();
 void free_screen();
 void update_terminal_size();

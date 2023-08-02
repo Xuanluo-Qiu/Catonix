@@ -1,47 +1,34 @@
 #include "display.h"
 
-int WIDTH = 0;
-int HEIGHT = 0;
-char **screen;
-
 void init_screen()
 {
 	update_terminal_size();
-	screen = (char**)malloc(HEIGHT * sizeof(char*));
-	for (int i=0; i<HEIGHT; i++)
-	{
-		screen[i] = (char*)malloc(WIDTH * sizeof(char));
+	win_conf.data = (char *)malloc(win_conf.height * win_conf.width * sizeof(char));
+	for (int i = 0; i < win_conf.height * win_conf.width; i++) {
+		win_conf.data[i] = ' ';
 	}
 }
 
 void free_screen()
 {
-	for (int i=0; i<HEIGHT; i++)
-	{
-		free(screen[i]);
-	}
-	free(screen);
+	free(win_conf.data);
 }
 
 void update_terminal_size() {
 	struct winsize size;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
-	WIDTH = size.ws_col;
-	HEIGHT = size.ws_row - 1;
+	win_conf.width = size.ws_col;
+	win_conf.height = size.ws_row-1;
 }
 
 void draw_scene()
 {
-	for (int h=0; h<HEIGHT; h++)
+	for (int h=0; h<win_conf.height; h++)
 	{
-		for (int w=0; w<WIDTH; w++)
-		{
-			printf("%c", screen[h][w]);
-		}
-		printf("\n");
+		int index = h * win_conf.width;
+		printf("%.*s\n", win_conf.width, win_conf.data + index);
 	}
-	printf("\x1b[J");
-	printf("\x1b[H");
+	printf("\x1b[J\x1b[H");
 }
 
 void frame_rate(int frame_number, long begin, long current)
