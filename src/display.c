@@ -14,11 +14,12 @@ void free_screen()
 	free(win_conf.data);
 }
 
-void update_terminal_size() {
+void update_terminal_size()
+{
 	struct winsize size;
 	ioctl(STDOUT_FILENO, TIOCGWINSZ, &size);
 	win_conf.width = size.ws_col;
-	win_conf.height = size.ws_row-1;
+	win_conf.height = size.ws_row;
 }
 
 void draw_scene()
@@ -26,8 +27,10 @@ void draw_scene()
 	for (int h=0; h<win_conf.height; h++)
 	{
 		int index = h * win_conf.width;
-		printf("%.*s\n", win_conf.width, win_conf.data + index);
+		printf("%.*s", win_conf.width, win_conf.data + index);
 	}
+	// write(STDOUT_FILENO, "\x1b[J", 4);
+	// write(STDOUT_FILENO, "\x1b[H", 3);
 	printf("\x1b[J\x1b[H");
 }
 

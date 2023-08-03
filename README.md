@@ -5,9 +5,9 @@ Catonix is a TUI (Text User Interface) library, written entirely in C language, 
 ## run example
 ```shell
 # build
-make example EXAMPLE_NAME=(The example file you want to run.).c
+make example EXAMPLE_NAME=*.c
 # run
-make run EXAMPLE_NAME=(The example file you want to run.).c
+make run EXAMPLE_NAME=*.c
 ```
 Or, you can use tools to run main example
 ```shell

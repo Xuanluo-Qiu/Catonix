@@ -8,12 +8,18 @@ int main(void)
 	hideCursor();
 
 	win_conf.data[3 * win_conf.width + 1] = 'H';
+	win_conf.data[win_conf.height-10 * win_conf.width + 1] = 'Y';
+
+	// printf("%d\n", win_conf.height);
+	// printf("\n%c\n", win_conf.data[win_conf.height-3 * win_conf.width + 1]);
+	// getchar();
 
 	enableRawMode();
 	event_loop();
 	disableRawMode();
 
 	endwin();
+
 	return 0;
 }
 
@@ -39,7 +45,7 @@ void event_loop()
 			} else if (buffer[0] == 'c') {
 				colprint(
 					FONT_MODE_BOLD,
-					FGCol=FG_BLUE,
+					FGCol=FG_BLACK,
 					BGCol=BG_CYAN
 				);
 			} else if (buffer[0] == 'b') {
@@ -48,6 +54,6 @@ void event_loop()
 		}
 
 		long current = clock();
-		frame_rate(60, begin, current);
+		frame_rate(120, begin, current);
 	}
 }

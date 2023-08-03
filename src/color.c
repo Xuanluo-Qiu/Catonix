@@ -11,5 +11,6 @@ void colprint(int mode, int fg_color, int bg_color)
 
 void col_end()
 {
+	win_conf.color = 0;
 	printf("\x1b[0m");
 }
